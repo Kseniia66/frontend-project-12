@@ -6,6 +6,3 @@ build:
 
 start:
 	npx start-server -s ./frontend/dist
-
-develop:
-	make start-backend & make start-frontend
