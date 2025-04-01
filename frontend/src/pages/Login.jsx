@@ -43,15 +43,12 @@ const Login = () => {
     },
   });
   return (
-    <div className='h-100 bg-light'>
-      <div className='h-100'>
-        <div className='h-100' id='chat'>
-          <div className='d-flex flex-column h-100'>
-            <nav className='shadow-sm navbar navbar-expand-lg navbar-light bg-white'>
-              <div className='container'>
-                <a className='navbar-brand' href={routes.chatPage()}>Hexlet Chat</a>
-              </div>
-            </nav>
+    <div className='bg-light min-vh-100'>
+      <nav className='shadow-sm navbar navbar-expand-lg navbar-light bg-white'>
+        <div className='container'>
+          <a className='navbar-brand' href={routes.chatPage()}>Hexlet Chat</a>
+        </div>
+      </nav>
             <div className='container-fluid vh-100 d-flex align-items-center justify-content-center bg-light'>
               <div className='row justify-content-center w-100'>
                 <div className='col-12 col-md-10 col-lg-8 col-xl-6'>
@@ -110,9 +107,6 @@ const Login = () => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
   );
 };
 

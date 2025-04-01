@@ -1,7 +1,6 @@
 import { useState, useContext } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useLocation, Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Chat from './pages/Chat.jsx';
 import Login from './pages/Login.jsx';
