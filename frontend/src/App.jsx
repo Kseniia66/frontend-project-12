@@ -1,35 +1,68 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useContext } from 'react';
+import { BrowserRouter, Routes, Route, Navigate, useLocation, Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
+import Chat from './pages/Chat.jsx';
+import Login from './pages/Login.jsx';
+import NotFound from './pages/NotFound.jsx';
+import routes from './pages/routes.js';
+import AuthContext from './contexts/index.jsx';
 
-function App() {
-  const [count, setCount] = useState(0)
+const AuthProvider = ({ children }) => {
+  const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('token'));
+
+  const logIn = (token) => {
+    localStorage.setItem('token', token);
+    setLoggedIn(true);
+  };
+  
+  const logOut = () => {
+    localStorage.removeItem('token');
+    setLoggedIn(false);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <AuthContext.Provider value={{ loggedIn, logIn, logOut }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
+
+const PrivateRoute = ({ children }) => {
+  const { loggedIn } = useContext(AuthContext);
+  const location = useLocation();
+
+  return loggedIn ? children : <Navigate to="/login" state={{ from: location }} />;
+};
+
+const AuthButton = () => {
+  const { loggedIn, logOut } = useContext(AuthContext);
+  const location = useLocation();
+
+  return loggedIn ? (
+    <Button onClick={logOut}>Log out</Button>
+  ) : (
+    <Button as={Link} to="/login" state={{ from: location }}>Log in</Button>
+  );
+};
+
+function App() {
+  return (
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path={routes.chatPage()} element={
+            <PrivateRoute>
+              <Chat />
+            </PrivateRoute>
+          } />
+          <Route path={routes.loginPage()} element={<Login />} />
+          <Route path={routes.notFoundPage()} element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
+  );
 }
 
-export default App
+export default App;
