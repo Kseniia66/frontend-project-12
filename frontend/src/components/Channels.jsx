@@ -8,7 +8,7 @@ import { selectActiveTab, activeChannelSelector, defaultChannelSelector } from '
 import AddModal from './AddModal.jsx';
 import RenameModal from './RenameModal.jsx';
 import RemoveModal from './RemoveModal.jsx';
-import  { closeModal, openModal } from '../store/modalSlices.js';
+import { closeModal, openModal } from '../store/modalSlices.js';
 
 const Channels = () => {
     const { t } = useTranslation();
@@ -44,10 +44,10 @@ const Channels = () => {
 
     useEffect(() => {
         if (channelRef.current && activeChannel?.id) {
-          channelRef.current.scrollTo({
-            top: activeChannel.id === defaultChannel.id ? 0 : channelRef.current.scrollHeight,
-            behavior: 'smooth'
-          });
+            channelRef.current.scrollTo({
+                top: activeChannel.id === defaultChannel.id ? 0 : channelRef.current.scrollHeight,
+                behavior: 'smooth'
+            });
         }
     }, [activeChannel]);
 
@@ -86,38 +86,38 @@ const Channels = () => {
     return (
         <div className='d-flex flex-column h-100'>
             <div className='d-flex mt-1 justify-content-between mb-2 ps-4 pe-2 p-4'>
-            <b>Каналы</b>
-            <Button 
-                type='button'
-                className='p-0 text-primary btn btn-group-vertical'
-                onClick={() => showModal('adding', null)}
-                variant="link"
+                <b>Каналы</b>
+                <Button
+                    type='button'
+                    className='p-0 text-primary btn btn-group-vertical'
+                    onClick={() => showModal('adding', null)}
+                    variant="link"
+                >
+                    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width={20} height={20} fill='currentColor'>
+                        <path d='M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z' />
+                        <path d='M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4' />
+                    </svg>
+                    <span className='visually-hidden'>+</span>
+                </Button>
+            </div>
+            <Nav
+                as='ul'
+                id='channels-box'
+                className='flex-column nav-pills nav-fill px-2 mb-3 overflow-auto h-100 d-block'
+                ref={channelRef}
             >
-                <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width={20} height={20} fill='currentColor'>
-                    <path d='M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z' />
-                    <path d='M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4' />
-                </svg>
-                <span className='visually-hidden'>+</span>
-            </Button>
-        </div>
-        <Nav
-            as='ul'
-            id='channels-box'
-            className='flex-column nav-pills nav-fill px-2 mb-3 overflow-auto h-100 d-block'
-            ref={channelRef}
-        >
-            {channels.map((channel) => {
-                return (
-                    <Nav.Item as='li' key={`channel-${channel.id}`} className='w-100'>
-                        {channel.removable ? removableChannel(channel) : notRemovableChannel(channel)}
-                    </Nav.Item>
-                )
-            })}
+                {channels.map((channel) => {
+                    return (
+                        <Nav.Item as='li' key={`channel-${channel.id}`} className='w-100'>
+                            {channel.removable ? removableChannel(channel) : notRemovableChannel(channel)}
+                        </Nav.Item>
+                    )
+                })}
             </Nav>
             {modals.type === 'adding' && <AddModal show={modals.type === 'adding'} onHide={hideModal} />}
             {modals.type === 'renaming' && <RenameModal show onHide={hideModal} channel={modals.channel} channels={channels} />}
             {modals.type === 'removing' && <RemoveModal show onHide={hideModal} channel={modals.channel} onRemove={handleRemove} />}
-            </div>
+        </div>
     );
 };
 

@@ -18,47 +18,47 @@ const AddModal = ({ show, onHide }) => {
   const formControlEl = useRef(null);
 
 
-const channelsNames = channels.map((channel) => channel.name);
+  const channelsNames = channels.map((channel) => channel.name);
 
-const formik = useFormik({
-  initialValues: {
-    name: '',
-  },
-  validationSchema: channelSchema(t, channelsNames),
-  validateOnChange: false,
-  onSubmit: async (values, { resetForm }) => {
-    try {
-      const response = await addChannel({ name: values.name.trim() }).unwrap();
-      const createdChannel = response.data || response;
-        
-      dispatch(selectActiveTab({
-        id: createdChannel.id,
-        name: createdChannel.name,
-        removable: createdChannel.removable
-      }));
-      toast.success(t('channels.createChannel'));
-      resetForm();
-      onHide();
-    } catch (error) {
-      console.error('Ошибка при создании канала:', error);
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+    },
+    validationSchema: channelSchema(t, channelsNames),
+    validateOnChange: false,
+    onSubmit: async (values, { resetForm }) => {
+      try {
+        const response = await addChannel({ name: values.name.trim() }).unwrap();
+        const createdChannel = response.data || response;
+
+        dispatch(selectActiveTab({
+          id: createdChannel.id,
+          name: createdChannel.name,
+          removable: createdChannel.removable
+        }));
+        toast.success(t('channels.createChannel'));
+        resetForm();
+        onHide();
+      } catch (error) {
+        console.error('Ошибка при создании канала:', error);
+      }
+    },
+  });
+
+  useEffect(() => {
+    if (show) {
+      formControlEl.current?.focus();
     }
-  },
-});
-
-useEffect(() => {
-  if(show) {
-    formControlEl.current?.focus();
-  }
-}, [show]);
+  }, [show]);
 
   return (
     <Modal show={show} onHide={onHide} centered>
       <Modal.Header closeButton>
         <Modal.Title>{t('channels.addChannel')}</Modal.Title>
       </Modal.Header>
-      
+
       <Modal.Body>
-      <Form onSubmit={formik.handleSubmit}>
+        <Form onSubmit={formik.handleSubmit}>
           <FormGroup>
             <FormControl
               name="name"

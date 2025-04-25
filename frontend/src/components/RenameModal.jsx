@@ -12,8 +12,8 @@ const RenameModal = ({ show, onHide, channel, channels }) => {
     const formControlEl = useRef(null);
 
     const channelsNames = channels
-    .map(c => c.name)
-    .filter(name => name !== channel?.name);
+        .map(c => c.name)
+        .filter(name => name !== channel?.name);
 
     const formik = useFormik({
         initialValues: { name: channel?.name || '' },

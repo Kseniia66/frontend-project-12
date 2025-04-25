@@ -10,6 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import * as filter from 'leo-profanity';
 import { io } from 'socket.io-client';
+import { Provider as RollbarProvider, ErrorBoundary } from '@rollbar/react';
 
 import App from './App.jsx';
 import resources from './locales/index.js';
@@ -67,20 +68,24 @@ filter.add(filter.getDictionary('en'));
 filter.add(filter.getDictionary('ru'));
 
 const rollbarConfig = {
-  accessToken: import.meta.env.ACCESS_TOKEN,
-  environment: 'production',
+  accessToken: 'a501fdeac6e24678a65584dce103ad71',
+  environment: 'testenv',
 };
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <StrictMode>
+  <RollbarProvider config={rollbarConfig}>
+    <StrictMode>
       <I18nextProvider i18n={i18n}>
+        <ErrorBoundary>
           <Provider store={store}>
             <App socket={socket} />
             <ToastContainer />
           </Provider>
+        </ErrorBoundary>
       </I18nextProvider>
-  </StrictMode>
+    </StrictMode>
+  </RollbarProvider>
 );
 

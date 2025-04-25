@@ -9,7 +9,7 @@ export default configureStore({
         [api.reducerPath]: api.reducer,
         activeChannel: activeChannelReducer,
         modals: modalsReducer,
-  },
-  middleware: (getDefaultMiddleware) => 
-    getDefaultMiddleware().concat(api.middleware),
+    },
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(api.middleware),
 });

@@ -16,19 +16,19 @@ function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
-      <div className="d-flex flex-column vh-100">
+        <div className="d-flex flex-column vh-100">
           <MainNavbar />
-            <Routes>
-              <Route path={routes.chatPage()} element={
-                <PrivateRoute>
-                  <Chat />
-                </PrivateRoute>
-              } />
-              <Route path={routes.loginPage()} element={<Login />} />
-              <Route path={routes.signUpPage()} element={<Signup />} />
-              <Route path={routes.notFoundPage()} element={<NotFound />} />
-            </Routes>
-            </div>
+          <Routes>
+            <Route path={routes.chatPage()} element={
+              <PrivateRoute>
+                <Chat />
+              </PrivateRoute>
+            } />
+            <Route path={routes.loginPage()} element={<Login />} />
+            <Route path={routes.signUpPage()} element={<Signup />} />
+            <Route path={routes.notFoundPage()} element={<NotFound />} />
+          </Routes>
+        </div>
       </BrowserRouter>
     </AuthProvider>
   );
