@@ -68,7 +68,7 @@ filter.add(filter.getDictionary('en'));
 filter.add(filter.getDictionary('ru'));
 
 const rollbarConfig = {
-  accessToken: 'a501fdeac6e24678a65584dce103ad71',
+  accessToken: 'cfab6ea4a3eb4ac1a3ac490902d06b7c',
   environment: 'testenv',
 };
 
