@@ -4,6 +4,9 @@ install:
 start:
 	npx start
 
+lint:
+	npx eslint .
+
 build:
 	npm run build
 
@@ -12,3 +15,6 @@ start-frontend:
 
 start-backend:
     npx start-server -s ./dist -p 5001
+
+lint:
+	npx eslint --ext js,jsx --no-eslintrc --config .eslintrc.yml .
