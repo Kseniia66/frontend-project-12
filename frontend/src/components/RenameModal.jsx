@@ -44,27 +44,28 @@ const RenameModal = ({ show, onHide, channel, channels }) => {
             </Modal.Header>
             <Modal.Body>
                 <Form onSubmit={formik.handleSubmit}>
-                    <FormGroup>
+                    <FormGroup controlId="name">
                         <FormControl
                             name="name"
+                            className="mb-2"
                             value={formik.values.name}
                             onChange={formik.handleChange}
-                            onKeyDown={(e) => e.key === 'Enter' && formik.handleSubmit()}
                             ref={formControlEl}
                             isInvalid={formik.errors.name}
                             disabled={isLoading}
                         />
-                        {formik.errors.name && (
+                        <Form.Label className="visually-hidden">{t('channels.nameChannel')}</Form.Label>
+                        {formik.errors.name &&
                             <Form.Control.Feedback type="invalid">
                                 {formik.errors.name}
                             </Form.Control.Feedback>
-                        )}
-                        <div className="d-flex justify-content-end mt-3">
+                        }
+                        <div className="d-flex justify-content-end">
                             <Button variant="secondary" className="me-2" onClick={onHide}>
                                 {t('channels.cancel')}
                             </Button>
                             <Button type="submit" variant="primary" disabled={isLoading}>
-                                {isLoading ? 'Сохранение...' : t('channels.send')}
+                                {t('channels.send')}
                             </Button>
                         </div>
                     </FormGroup>
