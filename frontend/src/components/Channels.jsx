@@ -61,7 +61,7 @@ const Channels = () => {
                 {filter.clean(channel.name)}
             </Button>
             <Dropdown.Toggle className='flex-grow-0 dropdown-toggle-split' variant={variant(channel)}>
-                <span className='vissually-hidden'>
+                <span className='visually-hidden'>Управление каналом
                 </span>
             </Dropdown.Toggle>
             <Dropdown.Menu>
