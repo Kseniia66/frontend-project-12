@@ -4,9 +4,6 @@ install:
 start:
 	npx start
 
-lint:
-	npx eslint .
-
 build:
 	npm run build
 
