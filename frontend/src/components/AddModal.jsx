@@ -62,6 +62,7 @@ const AddModal = ({ show, onHide }) => {
           <FormGroup>
             <FormControl
               name="name"
+              id="name"
               className="mb-2"
               value={formik.values.name}
               onChange={formik.handleChange}
