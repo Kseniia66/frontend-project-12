@@ -61,8 +61,7 @@ const Channels = () => {
                 {filter.clean(channel.name)}
             </Button>
             <Dropdown.Toggle className='flex-grow-0 dropdown-toggle-split' variant={variant(channel)}>
-                <span className='visually-hidden'>Управление каналом
-                </span>
+                <span className='visually-hidden'>Управление каналом</span>
             </Dropdown.Toggle>
             <Dropdown.Menu>
                 <Dropdown.Item role='button' onClick={() => showModal('removing', channel)}>{t('channels.remove')}</Dropdown.Item>

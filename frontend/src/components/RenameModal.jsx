@@ -11,36 +11,31 @@ const RenameModal = ({ show, onHide, channel, channels }) => {
     const [renameChannel, { isLoading }] = useRenameChannelMutation();
     const formControlEl = useRef(null);
 
-    const channelsNames = channels
-        .map(c => c.name)
-        .filter(name => name !== channel?.name);
+    const channelsNames = channels.map((channel) => channel.name);
 
     const formik = useFormik({
-        initialValues: { name: channel?.name || '' },
-        enableReinitialize: true,
+        initialValues: { name: channel.name },
         validationSchema: channelSchema(t, channelsNames),
         validateOnChange: false,
-        onSubmit: async (values, { resetForm }) => {
+        onSubmit: async (values) => {
             try {
                 await renameChannel({
                     id: channel.id,
                     name: values.name.trim()
                 }).unwrap();
                 toast.success(t('channels.renamedChannel'));
-                resetForm();
                 onHide();
             } catch (error) {
                 console.error('Ошибка при переименовании канала:', error);
             }
+            formik.resetForm();
         },
     });
 
     useEffect(() => {
-        if (show) {
-            formControlEl.current?.focus();
-            formControlEl.current?.select();
-        }
-    }, [show]);
+        formControlEl.current?.focus();
+        formControlEl.current?.select();
+    }, []);
 
     return (
         <Modal show={show} onHide={onHide} centered>
