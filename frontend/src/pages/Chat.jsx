@@ -1,6 +1,5 @@
-import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useGetChannelsQuery } from '../api.js';
 import Channels from '../components/Channels.jsx';
 import MessageBox from '../components/MessageBox.jsx';
