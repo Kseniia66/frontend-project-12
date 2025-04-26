@@ -5,7 +5,7 @@ import Channels from '../components/Channels.jsx';
 import MessageBox from '../components/MessageBox.jsx';
 
 const MainPage = () => {
-  const { isLoading: isChannelsLoading, error: channelsError } = useGetChannelsQuery();
+  const { error: channelsError } = useGetChannelsQuery();
 
   useEffect(() => {
     if (channelsError) {

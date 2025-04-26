@@ -49,7 +49,7 @@ const Channels = () => {
                 behavior: 'smooth'
             });
         }
-    }, [activeChannel]);
+    }, [activeChannel, defaultChannel]);
 
     const removableChannel = (channel) => (
         <Dropdown role='group' className='d-flex dropdown btn-group'>

@@ -13,7 +13,7 @@ import { selectActiveTab } from '../store/channelsSlice.js';
 const AddModal = ({ show, onHide }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const [addChannel, { isLoading }] = useAddChannelMutation();
+  const [addChannel] = useAddChannelMutation();
   const { data: channels = [] } = useGetChannelsQuery();
   const formControlEl = useRef(null);
 

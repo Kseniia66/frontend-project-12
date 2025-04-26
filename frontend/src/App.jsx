@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 import Chat from './pages/Chat.jsx';
 import Login from './pages/Login.jsx';
 import NotFound from './pages/NotFound.jsx';
@@ -11,8 +10,6 @@ import AuthProvider, { PrivateRoute } from './contexts/AuthProvider.jsx';
 import './i18n';
 
 function App() {
-  const { t, i18n } = useTranslation();
-
   return (
     <AuthProvider>
       <BrowserRouter>
