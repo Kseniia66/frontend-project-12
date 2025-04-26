@@ -68,8 +68,8 @@ filter.add(filter.getDictionary('en'));
 filter.add(filter.getDictionary('ru'));
 
 const rollbarConfig = {
-  accessToken: import.meta.env.ACCESS_TOKEN,
-  environment: 'production',
+  accessToken: 'b57724afdf404f6e93787313c038b9f0',
+  environment: 'testenv',
 };
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
