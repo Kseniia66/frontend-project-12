@@ -17,7 +17,7 @@ export default [
         sourceType: 'module',
       },
     },
-    settings: { react: { version: 'detect' } },
+    settings: { react: { version: '19.0' } },
     plugins: {
       'react': react,
       'react-hooks': reactHooks,
