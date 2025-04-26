@@ -5,7 +5,7 @@ import { useGetChannelsQuery } from '../api.js';
 import Channels from '../components/Channels.jsx';
 import MessageBox from '../components/MessageBox.jsx';
 
-const MainPage = () => {
+const Chat = () => {
   const { error: channelsError } = useGetChannelsQuery();
 
   useEffect(() => {
@@ -26,4 +26,4 @@ const MainPage = () => {
   );
 };
 
-export default MainPage;
+export default Chat;
