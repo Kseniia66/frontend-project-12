@@ -68,7 +68,7 @@ const AddModal = ({ show, onHide }) => {
               ref={formControlEl}
               isInvalid={formik.errors.name}
             />
-            <Form.Label className="visually-hidden" htmlFor="channelName">{t('channels.nameChannel')}</Form.Label>
+            <Form.Label className="visually-hidden" htmlFor="name">{t('channels.nameChannel')}</Form.Label>
             {formik.errors.name
               && <Form.Control.Feedback type="invalid">{formik.errors.name}</Form.Control.Feedback>}
             <div className="d-flex justify-content-end">
