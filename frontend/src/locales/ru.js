@@ -38,7 +38,7 @@ export default {
         createChannel: 'Канал создан',
         close: 'Закрыть',
         sure: 'Уверены?',
-        deleteChannel: 'Канал удален',
+        deleteChannel: 'Канал удалён',
         renamedChannel: 'Канал переименован',
     },
     countMessage: {
