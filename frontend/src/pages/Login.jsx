@@ -1,5 +1,5 @@
 import { Button, Form } from 'react-bootstrap'
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useFormik } from 'formik'
 import axios from 'axios'
 import { useLocation, useNavigate } from 'react-router-dom'

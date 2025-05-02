@@ -1,4 +1,3 @@
-import React from 'react'
 import { Nav, Button, Dropdown } from 'react-bootstrap'
 import { useGetChannelsQuery, useRemoveChannelMutation } from '../api'
 import { useRef, useEffect } from 'react'
