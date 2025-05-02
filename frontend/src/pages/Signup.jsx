@@ -1,20 +1,20 @@
-import React, { useRef, useState } from "react";
-import { Row, Form, Button } from 'react-bootstrap';
-import { useFormik } from 'formik';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import img from '/avatar_1-D7Cot-zE.jpg';
-import signupSchema from '../utils/validate.js';
-import routes from '../utils/routes.js';
-import useAuth from "../store/useAuth.jsx";
+import React, { useRef, useState } from 'react'
+import { Row, Form, Button } from 'react-bootstrap'
+import { useFormik } from 'formik'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import img from '/avatar_1-D7Cot-zE.jpg'
+import signupSchema from '../utils/validate.js'
+import routes from '../utils/routes.js'
+import useAuth from '../store/useAuth.jsx'
 
 const Signup = () => {
-  const { t } = useTranslation();
-  const navigate = useNavigate();
-  const inputEl = useRef(null);
-  const [authFailed, setAuthFailed] = useState(false);
-  const auth = useAuth();
+  const { t } = useTranslation()
+  const navigate = useNavigate()
+  const inputEl = useRef(null)
+  const [authFailed, setAuthFailed] = useState(false)
+  const auth = useAuth()
   const formik = useFormik({
     initialValues: {
       username: '',
@@ -24,19 +24,20 @@ const Signup = () => {
     validationSchema: signupSchema(t),
     onSubmit: async ({ username, password }, { setSubmitting }) => {
       try {
-        const { data } = await axios.post(routes.sighUpPath(), { username, password });
-        auth.logIn(data.token, data.username);
-        navigate(routes.chatPage());
-      } catch (err) {
-        setSubmitting(false);
-        if (err.response.status === 409) {
-          setAuthFailed(true);
-          inputEl.current.select();
-        }
-        throw err;
+        const { data } = await axios.post(routes.sighUpPath(), { username, password })
+        auth.logIn(data.token, data.username)
+        navigate(routes.chatPage())
       }
-    }
-  });
+      catch (err) {
+        setSubmitting(false)
+        if (err.response.status === 409) {
+          setAuthFailed(true)
+          inputEl.current.select()
+        }
+        throw err
+      }
+    },
+  })
   return (
     <div className="container-fluid pt-5 mt-3">
       <Row className="justify-content-center align-content-center h-100">
@@ -116,6 +117,6 @@ const Signup = () => {
       </Row>
     </div>
   )
-};
+}
 
-export default Signup;
+export default Signup

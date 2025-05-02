@@ -1,4 +1,4 @@
-const apiPath = '/api/v1';
+const apiPath = '/api/v1'
 
 export default {
   chatPage: () => '/',
@@ -7,4 +7,4 @@ export default {
   notFoundPage: () => '*',
   loginApi: () => [apiPath, 'login'].join('/'),
   sighUpPath: () => [apiPath, 'signup'].join('/'),
-};
+}
