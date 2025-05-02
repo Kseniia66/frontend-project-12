@@ -44,7 +44,7 @@ const Signup = () => {
           <div className="card shadow-sm">
             <div className="card-body d-flex flex-column flex-md-row justify-content-around align-items-center p-5">
               <div>
-                <img src={img} className="rounded-circle" alt="Регистрация" />
+                <img src={img} className="rounded-circle" alt={t('loginForm.registration')} />
               </div>
               <Form className="w-50" onSubmit={formik.handleSubmit}>
                 <h1 className="text-center mb-4">{t('loginForm.registration')}</h1>

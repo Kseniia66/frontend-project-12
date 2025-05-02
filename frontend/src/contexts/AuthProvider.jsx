@@ -1,8 +1,9 @@
 import React from 'react';
 import { useState, useEffect, useMemo } from 'react';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import AuthContext from './index.jsx';
 import useAuth from '../store/useAuth.jsx';
+import routes from '../utils/routes.js';
 
 const AuthProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('token'));
@@ -45,9 +46,15 @@ const AuthProvider = ({ children }) => {
 
 export const PrivateRoute = ({ children }) => {
   const { loggedIn } = useAuth();
+  const navigate = useNavigate();
 
-  return (
-    loggedIn ? children : <Navigate to="/login" />
-  );
+  useEffect(() => {
+    if (!loggedIn) {
+      navigate(routes.loginPage());
+    }
+  }, [loggedIn, navigate]);
+
+  return loggedIn ? children : null;
+  
 };
 export default AuthProvider;

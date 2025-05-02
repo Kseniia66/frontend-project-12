@@ -8,12 +8,10 @@ import routes from './utils/routes.js';
 import MainNavbar from './components/Navbar.jsx';
 import AuthProvider, { PrivateRoute } from './contexts/AuthProvider.jsx';
 
-import './i18n';
-
-function App() {
+const App = () => {
   return (
-    <AuthProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <AuthProvider>
         <div className="d-flex flex-column vh-100">
           <MainNavbar />
           <Routes>
@@ -27,8 +25,8 @@ function App() {
             <Route path={routes.notFoundPage()} element={<NotFound />} />
           </Routes>
         </div>
-      </BrowserRouter>
-    </AuthProvider>
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
 

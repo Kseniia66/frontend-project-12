@@ -6,9 +6,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import * as filter from 'leo-profanity';
 import { selectActiveTab, activeChannelSelector, defaultChannelSelector } from '../store/channelsSlice.js';
-import AddModal from './AddModal.jsx';
-import RenameModal from './RenameModal.jsx';
-import RemoveModal from './RemoveModal.jsx';
+import AddModal from './modals/AddModal.jsx';
+import RenameModal from './modals/RenameModal.jsx';
+import RemoveModal from './modals/RemoveModal.jsx';
 import { closeModal, openModal } from '../store/modalSlices.js';
 
 const Channels = () => {

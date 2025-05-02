@@ -4,8 +4,8 @@ import { useFormik } from 'formik';
 import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 import { Modal, FormGroup, FormControl, Button, Form } from 'react-bootstrap';
-import { useRenameChannelMutation } from '../api.js';
-import { channelSchema } from '../utils/validate.js';
+import { useRenameChannelMutation } from '../../api.js';
+import { channelSchema } from '../../utils/validate.js';
 
 const RenameModal = ({ show, onHide, channel, channels }) => {
     const { t } = useTranslation();

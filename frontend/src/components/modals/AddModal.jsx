@@ -7,9 +7,9 @@ import {
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
-import { useAddChannelMutation, useGetChannelsQuery } from '../api.js';
-import { channelSchema } from '../utils/validate.js';
-import { selectActiveTab } from '../store/channelsSlice.js';
+import { useAddChannelMutation, useGetChannelsQuery } from '../../api.js';
+import { channelSchema } from '../../utils/validate.js';
+import { selectActiveTab } from '../../store/channelsSlice.js';
 
 const AddModal = ({ show, onHide }) => {
   const { t } = useTranslation();

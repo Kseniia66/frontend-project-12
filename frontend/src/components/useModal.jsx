@@ -1,18 +1,24 @@
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { openModal, closeModal } from '../store/modalSlices';
 
 export const useModal = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [modalData, setModalData] = useState(null);
+  const dispatch = useDispatch();
+  const { type, channel } = useSelector(state => state.modals);
+  const isOpen = type !== null;
 
-  const openModal = (data = null) => {
-    setModalData(data);
-    setIsOpen(true);
+  const handleOpenModal = (modalType, channelData = null) => {
+    dispatch(openModal({ type: modalType, channel: channelData }));
   };
 
-  const closeModal = () => {
-    setIsOpen(false);
-    setModalData(null);
+  const handleCloseModal = () => {
+    dispatch(closeModal());
   };
 
-  return { isOpen, openModal, closeModal, modalData };
+  return {
+    isOpen,
+    modalType: type,
+    modalData: channel,
+    openModal: handleOpenModal,
+    closeModal: handleCloseModal,
+  };
 };
